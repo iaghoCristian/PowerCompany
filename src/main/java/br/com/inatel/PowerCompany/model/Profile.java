@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-public class Perfil implements GrantedAuthority{
+public class Profile implements GrantedAuthority{
 	
 	private static final long serialVersionUID = 1L;
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.inatel.PowerCompany.config.security.TokenService;
+import br.com.inatel.PowerCompany.controller.dto.TokenDto;
 import br.com.inatel.PowerCompany.controller.form.LoginForm;
 
 @RestController
@@ -27,15 +28,14 @@ public class AuthenticationController {
 	private TokenService tokenService;
 
 	@PostMapping
-	public ResponseEntity<?> auth(@RequestBody @Valid LoginForm form){
+	public ResponseEntity<TokenDto> auth(@RequestBody @Valid LoginForm form){
 		UsernamePasswordAuthenticationToken loginData = form.convert();
 		
 		try {
 			Authentication authentication = authManager.authenticate(loginData);
 			String token = tokenService.generateToken(authentication);
-			System.out.println(token);
 			
-			return ResponseEntity.ok().build();
+			return ResponseEntity.ok(new TokenDto(token, "Bearer"));
 		} catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().build();
 		}

@@ -29,7 +29,7 @@ public class User implements UserDetails{
 	private String pass;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Perfil> perfis = new ArrayList<>();
+	private List<Profile> profiles = new ArrayList<>();
 	
 	public Long getId() {
 		return id;
@@ -52,9 +52,10 @@ public class User implements UserDetails{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.perfis;
+		return this.profiles;
 	}
 	@Override
 	public String getPassword() {
