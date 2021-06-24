@@ -2,12 +2,12 @@ package br.com.inatel.PowerCompany.controller.dto;
 
 public class TokenDto {
 
-	private String token;
 	private String type;
-
-	public TokenDto(String token, String type) {
-		this.token = token;
+	private String token;
+	
+	public TokenDto(String type, String token) {
 		this.type = type;
+		this.token = token;
 	}
 
 	public String getToken() {

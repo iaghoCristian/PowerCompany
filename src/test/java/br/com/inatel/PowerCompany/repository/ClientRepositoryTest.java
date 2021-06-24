@@ -24,18 +24,20 @@ class ClientRepositoryTest {
 		
 	}
 	
-	/*@Before
-	void before() {
-		client = new Client("18765373908", "Teste","36198672" ,"Rua Teste", "Distrito Teste", "1276");
-		repository.save(client);
-	}*/
-	
 	@SuppressWarnings("deprecation")
 	@Test
 	void shouldReturnName() {
 		Pageable pageable = null;
 		Page<Client> test = repository.findByName("Teste", pageable);
 		Assert.assertEquals("Teste", test.getContent().get(0).getName());
+	} 
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	void shouldntFindClient() {
+		Pageable pageable = null;
+		Page<Client> test = repository.findByName("Nonexistent", pageable);
+		Assert.assertTrue((test.getContent()).isEmpty());
 	} 
 
 }
