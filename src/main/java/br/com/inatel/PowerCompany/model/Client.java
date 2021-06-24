@@ -1,6 +1,5 @@
 package br.com.inatel.PowerCompany.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +10,9 @@ public class Client{
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
 	private String cpf;
 	private String name;
+	private String cep;
 	private String address;
 	private String district;
 	private String number;
@@ -24,12 +23,24 @@ public class Client{
 	}
 	
 
-	public Client(String cpf, String name, String address, String district, String number) {
+	public Client(String cpf, String name,String cep , String address, String district, String number) {
 		this.cpf = cpf;
 		this.name = name;
+		this.cep = cep;
 		this.address = address;
 		this.district = district;
 		this.number = number;
+	}
+
+	
+
+	public String getCep() {
+		return cep;
+	}
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 

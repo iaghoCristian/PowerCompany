@@ -10,6 +10,9 @@ import br.com.inatel.PowerCompany.repository.ClientRepository;
 public class ClientFormUpdate {
 	
 	@NotNull @NotEmpty
+	private String cep;
+	
+	@NotNull @NotEmpty
 	private String address;
 	
 	@NotNull @NotEmpty
@@ -17,6 +20,14 @@ public class ClientFormUpdate {
 	
 	@NotNull @NotEmpty
 	private String number;
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
 	public String getAddress() {
 		return address;
@@ -47,6 +58,7 @@ public class ClientFormUpdate {
 		client.setAddress(this.address);
 		client.setDistrict(this.district);
 		client.setNumber(this.number);
+		client.setCep(this.cep);
 		return client;
 	}
 	
