@@ -29,7 +29,7 @@ public class ApiCepService {
 	        conn.setRequestProperty("Accept", "application/json");
 	        
 	        if (conn.getResponseCode() != 200) {
-                System.out.println("Erro " + conn.getResponseCode() + " ao obter dados da URL " + url);
+	        	log.warn("Erro " + conn.getResponseCode() + " ao obter dados da URL " + url);
             }
 	     
 	        BufferedReader buffer = new BufferedReader(new InputStreamReader(conn.getInputStream()));
